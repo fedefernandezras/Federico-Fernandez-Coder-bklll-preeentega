@@ -11,7 +11,7 @@ import mongoose from 'mongoose';
 
 const router = Router();
 
-// Crear  carrito
+
 router.post("/", async (req, res) => {
   try {
     const cart = await cartModel.create({});
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Obtener un carrito por id
+
 router.get("/:cid", async (req, res) => {
   const { cid } = req.params;
   try {
@@ -41,7 +41,7 @@ router.get("/:cid", async (req, res) => {
   }
 });
 
-// Agregar un producto a un carrito
+
 router.post("/:cid/product/:pid", async (req, res) => {
   const { cid, pid } = req.params;
   try {
@@ -87,7 +87,7 @@ router.post("/:cid/product/:pid", async (req, res) => {
   }
 });
 
-// Eliminar un producto especifico del carrito
+
 router.delete("/:cid/products/:pid", async (req, res) => {
   const { cid, pid } = req.params;
   try {
@@ -103,7 +103,7 @@ router.delete("/:cid/products/:pid", async (req, res) => {
   }
 });
 
-// Actualizar el un carrito via ID con paginacion etc
+
 router.put("/:cid", async (req, res) => {
   const { cid } = req.params;
   const { limit, page, sort, category, status } = req.query;
@@ -173,7 +173,7 @@ router.put("/:cid", async (req, res) => {
   }
 });
 
-// Eliminar todos los productos de un carrito especifico
+
 router.delete("/:cid", async (req, res) => {
   const { cid } = req.params;
   try {
@@ -191,7 +191,7 @@ router.delete("/:cid", async (req, res) => {
   }
 });
 
-// Actualizar la cantidad de un producto especifico en un carrito especifico.
+
 router.put("/:cid/products/:pid", async (req, res) => {
   const { cid, pid } = req.params;
   const { quantity } = req.body;
@@ -219,7 +219,7 @@ router.put("/:cid/products/:pid", async (req, res) => {
   }
 });
 
-// Id de todos los carritos
+
 router.get("/", async (req, res) => {
   try {
 
@@ -238,7 +238,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Ruta para finalizar la compra y generar un ticket
+
 
 router.post("/:cid/purchase", authMiddleware, purchaseCart);
 

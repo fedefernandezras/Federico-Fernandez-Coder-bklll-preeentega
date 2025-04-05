@@ -17,7 +17,7 @@ export class CartManager {
     return this.carts;
   }
 
-  //Crear un método createCart que genere un nuevo carrito con un id único y un array de productos vacío.
+  
 
   async createCart() {
     await this.getCarts();
@@ -34,7 +34,7 @@ export class CartManager {
     return newCart;
   }
 
-  // Crear un método getCartById que reciba un id de carrito y devuelva el carrito correspondiente.
+ 
   async getCartById(cid) {
     await this.getCarts();
 
@@ -45,8 +45,7 @@ export class CartManager {
     return cart;
   }
 
-  // Crear un método addProductToCart que reciba un id de carrito y un id de producto y agregue el producto al carrito correspondiente.
-  // Si el producto ya existe en el carrito, se debe incrementar la cantidad en 1.
+  
   async addProductToCart(cid, pid) {
     
     const cart = await this.getCartById(cid);
