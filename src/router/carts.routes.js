@@ -10,7 +10,42 @@ import mongoose from 'mongoose';
 
 
 const router = Router();
-
+/**
+ * @swagger
+ * /api/carts/{cid}/product/{pid}:
+ *   post:
+ *     summary: Agregar un producto al carrito
+ *     description: Este endpoint agrega un producto al carrito especificado por su ID.
+ *     parameters:
+ *       - name: cid
+ *         in: path
+ *         description: ID del carrito
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - name: pid
+ *         in: path
+ *         description: ID del producto
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Producto agregado correctamente al carrito.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: success
+ *                 message:
+ *                   type: string
+ *                   example: Producto producto123 agregado al carrito
+ *       404:
+ *         description: Carrito o producto no encontrado
+ */
 
 router.post("/", async (req, res) => {
   try {

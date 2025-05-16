@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { generateMockUsers } from "../mocks/mocking.js";
+import { generateMockPets } from "../mocks/adoptionmocks.js";
 import UserModel from "../model/user.Model.js";
 import PetModel from "../model/pet.Model.js";
 import { faker } from "@faker-js/faker";
@@ -12,10 +13,28 @@ router.get("/mockingusers", (req, res) => {
     res.json(users);
 });
 
+router.post("/generateMockPets", async (req, res) => {
+    const { pets } = req.body;
 
+    if (!pets || typeof pets !== "number" || pets <= 0) {
+        return res.status(400).json({ error: "Debes enviar una cantidad válida de mascotas." });
+    }
+
+    try {
+        const mockPets = generateMockPets(pets);
+        const insertedPets = await PetModel.insertMany(mockPets);
+
+        res.json({
+            message: "Mascotas sin dueño generadas correctamente",
+            pets: insertedPets.length,
+        });
+    } catch (error) {
+        console.error("Error al generar mascotas sin dueño:", error);
+        res.status(500).json({ error: error.message });
+    }
+});
 router.post("/generateData", async (req, res) => {
-    const { users = 10, pets = 10 } = req.body;
-
+    const { users, pets } = req.body;
     try {
       
         const mockUsers = generateMockUsers(users);

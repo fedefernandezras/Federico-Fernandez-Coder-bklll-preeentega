@@ -21,3 +21,5 @@ export const authMiddleware = (req, res, next) => {
       return res.status(403).json({ status: "error", message: "Token inválido" });
     }
   };
+
+  //export default app;

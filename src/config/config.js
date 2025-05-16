@@ -3,7 +3,7 @@ import { config } from "dotenv";
 config();
 
 export const CONFIG = {
-  PORT: process.env.PORT || 5000,
+  PORT: process.env.PORT || 4000,
   MONGO_URI: process.env.MONGO_URI,
   MAIL: {
     USER: process.env.NODEMAILER_USER,
